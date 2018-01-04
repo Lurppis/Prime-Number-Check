@@ -1,4 +1,4 @@
-# WSB Restaurant
+# Prime number checker
 
 ## AGENDA
 ## Table of Contents
