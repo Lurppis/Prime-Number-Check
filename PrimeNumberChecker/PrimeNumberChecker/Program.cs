@@ -13,20 +13,28 @@ namespace PrimeNumberChecker
         static Stopwatch sw = new Stopwatch();
         static void Main(string[] args)
         {
+            Console.WriteLine("How much numbers you would like to generate?");
+            int.TryParse(Console.ReadLine(), out int count);
+
+            Console.WriteLine("Where would you like to store those numbers? (Type Name file)");
+            string numbersFileName = Console.ReadLine();
+
+            Console.WriteLine("Where would you like to store all found prime numbers? (Type Name file)");
+            string primesFileName = Console.ReadLine();
             sw.Start();
-            var numbers = Generator.GenerateRandomies(int.Parse(args[0]));
+            var numbers = Generator.GenerateRandomies(count);
             sw.Stop();
             Console.WriteLine("Generating random numbers. (" + sw.ElapsedMilliseconds + "ms)");
             sw.Reset();
 
             sw.Start();
-            Generator.SaveNumbersToFile(numbers, args[1]);
+            Generator.SaveNumbersToFile(numbers, numbersFileName);
             sw.Stop();
             Console.WriteLine("Saving generated numbers to file. " + sw.ElapsedMilliseconds + "ms)");
             sw.Reset();
 
             sw.Start();
-            numbers = Generator.LoadNumbersFromFile(args[1]);
+            numbers = Generator.LoadNumbersFromFile(numbersFileName);
             sw.Stop();
             Console.WriteLine("Loading generated numbers to field. " + sw.ElapsedMilliseconds + "ms)");
             sw.Reset();
@@ -45,11 +53,11 @@ namespace PrimeNumberChecker
             sw.Reset();
 
             sw.Start();
-            Generator.SaveNumbersToFile(PrimesList, args[2]);
+            Generator.SaveNumbersToFile(PrimesList, primesFileName);
             sw.Stop();
             Console.WriteLine("Saving prime numbers to file. " + sw.ElapsedMilliseconds + "ms)");
 
-            Console.WriteLine($"Application generate {PrimesList.Count} prime nubers!\n\n\n" +
+            Console.WriteLine($"Application generate {PrimesList.Count} prime nubers from {count}!\n\n\n" +
                 $"\tPress enter to exit!");
             Console.ReadLine();
         }
