@@ -17,7 +17,7 @@
 
 > MyPartitioner code sample:
 >
-         Model increasing workloads as a right triangle 
+         Model increasing workloads as a triangle 
          divided into equal areas along vertical lines.
          Each partition  is taller and skinnier
          than the last.
